@@ -12,7 +12,7 @@ public class FileReader {
 
     static {
         try{
-            String path = "resources/App.properties";
+            String path = "src/main/resources/App.properties";
             FileInputStream fileInputStream = new FileInputStream(path);
             properties = new Properties();
             properties.load(fileInputStream);
