@@ -19,7 +19,12 @@ public class UsersTest {
 
     @Test
     void  Test(){
-        UserRequest user = UserRequest.builder().name("Miraida").email("11kaly2412aka@example.com").gender("female").status("active").build();
+        UserRequest user = UserRequest.builder()
+                .name("Miraida")
+                .email("11kaly2412aka@example.com")
+                .gender("female")
+                .status("active")
+                .build();
         userController.createNewUser(user);
     }
 
