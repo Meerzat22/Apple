@@ -11,6 +11,8 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 @Tag("API")
 public class UsersTest {
 
@@ -18,20 +20,28 @@ public class UsersTest {
 
 
     @Test
-    void  Test(){
+    void createUserTest(){
         UserRequest user = UserRequest.builder()
                 .name("Miraida")
-                .email("11kaly2412aka@example.com")
+                .email("miraida" + System.currentTimeMillis() + "@example.com")
                 .gender("female")
                 .status("active")
                 .build();
-        userController.createNewUser(user);
+
+        UserResponse createdUser = userController.createNewUser(user);
+
+        assertNotNull(createdUser);
+        assertNotNull(createdUser.getId());
     }
 
     @Test
     void getUserTest(){
-        System.out.println(userController.getUser("8411646"));
-        userController.getUser("8411646");
+        UserResponse user = userController.getUser("8411646");
+
+        System.out.println(user);
+
+        assert user != null;
+        assert user.getId() != null;
     }
 
 
@@ -83,7 +93,9 @@ public class UsersTest {
     @Test
     void deleteUserTest(){
         Response response = userController.deleteUser("8410036");
+
         System.out.println(response.getStatusCode());
+        assert response.getStatusCode() == 204;
     }
 
     @Test
