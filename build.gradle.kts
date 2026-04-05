@@ -43,6 +43,9 @@ dependencies {
 
     testImplementation("io.qameta.allure:allure-selenide:2.33.0")
 
+    // Source: https://mvnrepository.com/artifact/io.qameta.allure/allure-junit5
+    testImplementation("io.qameta.allure:allure-junit5:2.33.0")
+
     implementation("io.github.bonigarcia:webdrivermanager:6.3.3")
 }
 
