@@ -52,7 +52,7 @@ public class BaseTest {
         linksPage = new LinksPage();
         elementActions = new ElementActions();
         windowPage = new WindowPage();
-        iFrameHelper = new IFrameHelper();
+        //iFrameHelper = new IFrameHelper();
         iFramePage = new IFramePage();
         webTablesPage = new WebTablesPage();
 

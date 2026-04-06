@@ -36,12 +36,12 @@ public class UsersTest {
 
     @Test
     void getUserTest(){
-        UserResponse user = userController.getUser("8411646");
+        UserResponse user = (UserResponse) userController.getUser("8411646");
 
-        System.out.println(user);
+        System.out.println("User = " + user);
 
-        assert user != null;
-        assert user.getId() != null;
+        assert user != null : "Пользователь не найден";
+        assert user.getId() != null : "id == null";
     }
 
 
@@ -92,10 +92,23 @@ public class UsersTest {
 
     @Test
     void deleteUserTest(){
-        Response response = userController.deleteUser("8410036");
+        UserRequest user = UserRequest.builder()
+                .name("Miraida")
+                .email("miraida" + System.currentTimeMillis() + "@example.com")
+                .gender("female")
+                .status("active")
+                .build();
 
-        System.out.println(response.getStatusCode());
-        assert response.getStatusCode() == 204;
+        UserResponse createdUser = userController.createNewUser(user);
+        assert createdUser != null;
+        assert createdUser.getId() != null;
+
+        Response response = userController.deleteUser(String.valueOf(createdUser.getId()));
+
+        System.out.println("Delete status = " + response.getStatusCode());
+        System.out.println("Delete body = " + response.asString());
+
+        assert response.getStatusCode() == 204 : "Ожидали 204, получили " + response.getStatusCode();
     }
 
     @Test

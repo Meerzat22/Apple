@@ -10,16 +10,16 @@ public class IFrameHelper {
 
     private WebDriver driver;
 
-    public IFrameHelper() {
+    public IFrameHelper(WebDriver driver) {
         this.driver = driver;
     }
 
     public void switchToFrame(String nameOrId){
-         new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions
-                 .frameToBeAvailableAndSwitchToIt(nameOrId));
+        new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(nameOrId));
     }
 
-    public void switchToParentFrame(){
+    public void switchToParentFrame() {
         driver.switchTo().parentFrame();
     }
-}
+}  

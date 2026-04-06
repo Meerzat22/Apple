@@ -21,8 +21,8 @@ public class UserController extends HttpRequest {
         return super.post(getEndPoint(EndPoint.PUBLIC, EndPoint.V2, EndPoint.USERS), user.toJson()).as(UserResponse.class);
     }
 
-    public UserResponse getUser(String userId){
-        return super.get(getEndPoint(EndPoint.PUBLIC, EndPoint.V2, EndPoint.USERS, userId)).as(UserResponse.class);
+    public Response getUser(String userId){
+        return super.get(getEndPoint(EndPoint.PUBLIC, EndPoint.V2, EndPoint.USERS, userId));
     }
 
     public UserResponse partialUserUpdate(String userId, UserRequest body){
